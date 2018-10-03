@@ -1,0 +1,249 @@
+* {
+    box-sizing:border-box;
+    font-family: Helvetica, Arial, sans-serif;
+}
+body {
+    margin: 0;
+    background-color: whitesmoke;
+}
+
+h1 {
+    padding:20px;
+    color:white;
+    margin:0;
+    font-size: 3rem;
+    font-variant: small-caps;
+}
+h2 {
+    font-size: 4rem;
+}
+
+p {
+    font-size:100%;
+}
+
+.wrapHeader {
+    grid-area:innhold;
+}
+.header {
+    padding: 15px;
+    background-image:url(./bilder/header.png);
+    background-repeat: no-repeat;
+    background-size: 1920px 260px;
+    display:grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-area: header;
+    grid-template-areas: ". . innhold ."
+}
+
+nav {
+    display:flex;
+}
+nav a {
+    padding: 0px;
+    text-align: center;
+    margin-right: 5rem;
+    text-decoration: none;
+    color:rgb(255, 255, 255);
+}
+nav a:hover {
+    /*Ser ut som at linken spiser lysfargen til underlinjen. Chill og digg effekt.*/
+    color:white;
+    border-bottom: 1px solid rgb(36, 75, 107);
+    transition-property: color, border-bottom;
+    transition-duration: 1s;
+    transition-timing-function: ease-in-out;
+
+}
+aside {
+    grid-area: aside;
+    background-image:url(./bilder/header.png);
+    background-repeat: no-repeat;
+    background-size: 1920px 800px;
+    border-left: 1px solid rgb(233, 233, 233);
+    padding:10px;
+}
+#knapp {
+    text-decoration: none;
+    color: black;
+    background-color: rgb(192, 192, 192);
+    position: relative;
+    padding: 5px; 
+}
+#knapp:hover {
+    background-color: whitesmoke;
+}
+#knapp:active {
+    top: 1px;
+    left: 1px;
+}
+
+aside a {
+    text-decoration:none;
+    color: white;
+}
+aside a:hover {
+    text-decoration:underline;
+}
+
+main {
+    background-color:whitesmoke;
+    grid-area: main;
+    padding: 2rem;
+
+}
+
+main.main {
+    display:flex;
+    flex-direction: row;
+    justify-content:center;
+    align-items: baseline;
+} 
+main.main a{
+    color:black;
+    text-decoration:none;
+}
+
+main.article header {
+    text-align:center;
+}
+main.article section header {
+    text-align: left;
+}
+main.article article {
+    font-family: Helvetica, Arial, sans-serif;
+}
+main.article article h3 {
+    padding-top:30px;
+    font-size: 2rem;
+}
+footer {
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 10px;
+    grid-area: footer;
+    text-align: center;
+    color:white;
+    background-image:url(./bilder/header.png);
+    background-repeat: no-repeat;
+    background-size: 1920px 250px;
+}
+footer li {
+    color:rgb(223, 223, 223);
+}
+footer a {
+    text-decoration:none;
+    color:rgb(223, 223, 223);
+}
+address {
+    text-decoration:none;
+    color:white;
+}
+footer a:hover {
+    color:white;
+}
+figure {
+    width: 50%;
+    float:right;
+}
+.wireframe {
+    display: flex;
+}
+#figcaptionWireframe {
+    text-align: center;
+}
+img {
+    max-width: 100%;
+    max-height: 100%
+}
+article.artikkel {
+    display:flex;
+    position:relative;
+    flex-direction: column;
+    padding:10px;
+    width: 10rem;
+    margin-top: 3rem;
+    border-radius: 3%;
+}
+article.artikkel h3 {
+    text-align:center;
+    color:black;
+    text-decoration:none;
+}
+
+article.artikkel:hover {
+    box-shadow: 1px 2px 5px -1px rgba(0, 0, 0, 0.534);
+    
+}
+
+
+
+/* GRID */
+.wrapHele {
+    display:grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: 200px repeat(6, auto);
+    grid-template-areas:
+        "header header header header header header header"
+        ". aside main main main main ."
+        ". aside main main main main ."
+        ". aside main main main main ."
+        ". aside main main main main ."
+        ". aside main main main main ."
+        "footer footer footer footer footer footer footer"
+}
+.wrapMain {
+    display:grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: 200px repeat(6, auto);
+    grid-template-areas:
+        "header header header header header header header"
+        ". main main main main main ."
+        ". main main main main main ."
+        ". main main main main main ."
+        ". main main main main main ."
+        ". main main main main main ."
+        "footer footer footer footer footer footer footer"
+}
+
+
+
+/* HER GJØRES DOKUMENTET KLAR FOR PRINTEREN */
+@media print {
+    .wrapMain, .wrapHele {
+        display:grid;
+        grid-template-columns: repeat(6, 1fr);
+        grid-template-rows: 100px repeat(5, auto) auto;
+        grid-template-areas:
+            ". main main main main ."
+            ". main main main main ."
+            ". main main main main ."
+            ". main main main main ."
+            ". main main main main ."
+            ". main main main main ."
+            ". . . . . ."
+    }
+    aside {
+        display:none;
+    }
+    footer {
+        display:none;
+    }
+    header.top {
+        display:none;
+    }
+    * {
+        font-family: 'Times New Roman', Times, serif;
+    }
+    a:after {
+        content:" (" attr(href) ") ";
+        font-size:0.8em;
+        font-weight:normal;
+    }
+}
+
+
+
+
+
+
